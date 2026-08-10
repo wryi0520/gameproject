@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cotherm5g1kcr"]
+
+[ext_resource type="Script" uid="uid://cpyhjlpxqu1mo" path="res://scripts/health_bar.gd" id="1_tmb1u"]
+
+[node name="HealthBar" type="CanvasLayer" unique_id=1516646501]
+
+[node name="HealthBar" type="Control" parent="." unique_id=1980352910]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_tmb1u")
+
+[node name="Background" type="ColorRect" parent="HealthBar" unique_id=826747921]
+layout_mode = 0
+
+[node name="Fill" type="ColorRect" parent="HealthBar" unique_id=1772089261]
+layout_mode = 0
+
+[node name="Label" type="Label" parent="HealthBar" unique_id=1429448156]
+layout_mode = 0

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bglrnxxrsd0qo"]
+
+[ext_resource type="Script" path="res://scripts/ally.gd" id="1_66gko"]
+
+[sub_resource type="Image" id="Image_s4jrt"]
+data = {
+"data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
+"format": "RGBA8",
+"height": 3,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_plkbl"]
+image = SubResource("Image_s4jrt")
+
+[node name="Ally" type="Node2D" unique_id=723068448]
+script = ExtResource("1_66gko")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=960902140]
+scale = Vector2(0.14, 0.14)
+offset = Vector2(0, -124)
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=66343094]
+
+[node name="DissolveParticles" type="CPUParticles2D" parent="." unique_id=1888963472]
+position = Vector2(0, -15)
+emitting = false
+amount = 18
+texture = SubResource("ImageTexture_plkbl")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.85
+direction = Vector2(0, -1)
+spread = 60.0
+gravity = Vector2(0, -40)
+initial_velocity_min = 15.0
+initial_velocity_max = 45.0
+scale_amount_min = 1.5
+scale_amount_max = 3.0
+color = Color(0.1, 0.05, 0.2, 0.9)
