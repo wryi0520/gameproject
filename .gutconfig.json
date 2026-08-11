@@ -1,0 +1,7 @@
+{
+	"gdir": ["res://tests/unit"],
+	"ginclude_subdirs": true,
+	"glog": 1,
+	"gexit": true,
+	"gexit_on_success": true
+}
