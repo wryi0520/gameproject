@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://q0m4b6ektety"]
+
+[ext_resource type="Script" uid="uid://ch407k0o04bbr" path="res://scripts/death_realm.gd" id="1_drroot"]
+[ext_resource type="PackedScene" uid="uid://dnom7huvnlgfs" path="res://scenes/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://cotherm5g1kcr" path="res://scenes/HealthBar.tscn" id="3_hpbar"]
+[ext_resource type="PackedScene" uid="uid://bgbkf3ve4jfy3" path="res://scenes/Enemy.tscn" id="4_wraith"]
+[ext_resource type="Shader" uid="uid://ip64mp4h6fn3" path="res://shaders/grayscale_overlay.gdshader" id="6_shader"]
+[ext_resource type="Script" uid="uid://bsdyxdo7pmkte" path="res://scripts/angel_door.gd" id="7_430va"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1150, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_void"]
+size = Vector2(1600, 60)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gray"]
+shader = ExtResource("6_shader")
+shader_parameter/vignette_strength = 0.35
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00jco"]
+size = Vector2(40, 80)
+
+[node name="DeathRealm" type="Node2D" unique_id=1641851857]
+script = ExtResource("1_drroot")
+
+[node name="Background" type="ColorRect" parent="." unique_id=354360598]
+offset_left = -100.0
+offset_top = -300.0
+offset_right = 1300.0
+offset_bottom = 700.0
+mouse_filter = 2
+color = Color(0.05, 0.045, 0.05, 1)
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=156017700]
+copy_mode = 2
+
+[node name="AshParticles" type="CPUParticles2D" parent="." unique_id=739340502]
+position = Vector2(575, 460)
+amount = 40
+lifetime = 5.0
+preprocess = 5.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, -14)
+initial_velocity_min = 8.0
+initial_velocity_max = 22.0
+scale_amount_max = 2.2
+color = Color(0.6, 0.58, 0.55, 0.5)
+
+[node name="StartMarker" type="Marker2D" parent="." unique_id=729593732]
+position = Vector2(60, 400)
+
+[node name="Player" parent="." unique_id=2076624690 instance=ExtResource("2_player")]
+position = Vector2(60, 400)
+
+[node name="HealthBar" parent="." unique_id=23625641 instance=ExtResource("3_hpbar")]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=982397539]
+position = Vector2(575, 460)
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=1648684895]
+offset_left = -575.0
+offset_top = -20.0
+offset_right = 575.0
+offset_bottom = 20.0
+mouse_filter = 2
+color = Color(0.2, 0.19, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=47086562]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Tombstone1" type="Polygon2D" parent="." unique_id=1218171250]
+position = Vector2(260, 440)
+color = Color(0.3, 0.29, 0.28, 1)
+polygon = PackedVector2Array(-10, 0, -10, -22, 0, -32, 10, -22, 10, 0)
+
+[node name="Tombstone2" type="Polygon2D" parent="." unique_id=1645564765]
+position = Vector2(340, 440)
+color = Color(0.27, 0.26, 0.25, 1)
+polygon = PackedVector2Array(-8, 0, -8, -16, 0, -24, 8, -16, 8, 0)
+
+[node name="Tombstone3" type="Polygon2D" parent="." unique_id=2119235046]
+position = Vector2(830, 440)
+color = Color(0.3, 0.29, 0.28, 1)
+polygon = PackedVector2Array(-10, 0, -10, -22, 0, -32, 10, -22, 10, 0)
+
+[node name="Wraith" parent="." unique_id=2133543184 instance=ExtResource("4_wraith")]
+modulate = Color(0.65, 0.65, 0.7, 0.9)
+position = Vector2(600, 400)
+
+[node name="VoidCatch" type="Area2D" parent="." unique_id=738355872]
+position = Vector2(575, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VoidCatch" unique_id=412214987]
+shape = SubResource("RectangleShape2D_void")
+
+[node name="GrayscaleLayer" type="CanvasLayer" parent="." unique_id=1136586325]
+layer = 10
+
+[node name="Overlay" type="ColorRect" parent="GrayscaleLayer" unique_id=1760261002]
+material = SubResource("ShaderMaterial_gray")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="AngelDoor" type="Area2D" parent="." unique_id=1303265263]
+position = Vector2(1080, 400)
+script = ExtResource("7_430va")
+
+[node name="@ColorRect@22714" type="ColorRect" parent="AngelDoor" unique_id=532804441]
+offset_left = -16.0
+offset_top = -46.0
+offset_right = 16.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.55)
+
+[node name="@CollisionShape2D@22715" type="CollisionShape2D" parent="AngelDoor" unique_id=796799571]
+shape = SubResource("RectangleShape2D_00jco")

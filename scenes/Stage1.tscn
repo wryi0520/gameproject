@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://cktsi2tk48vli"]
+
+[ext_resource type="PackedScene" uid="uid://dnom7huvnlgfs" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://cotherm5g1kcr" path="res://scenes/HealthBar.tscn" id="2_hpbar"]
+[ext_resource type="PackedScene" uid="uid://bgbkf3ve4jfy3" path="res://scenes/Enemy.tscn" id="3_enemy"]
+[ext_resource type="Script" uid="uid://cbwfrq2jor1eo" path="res://scripts/stage_portal.gd" id="4_portal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tower"]
+size = Vector2(60, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(90, 140)
+
+[node name="Stage1" type="Node2D" unique_id=1212238851]
+
+[node name="Background" type="ColorRect" parent="." unique_id=1973052090]
+offset_left = -100.0
+offset_top = -300.0
+offset_right = 2000.0
+offset_bottom = 700.0
+mouse_filter = 2
+color = Color(0.55, 0.75, 0.92, 1)
+
+[node name="StartMarker" type="Marker2D" parent="." unique_id=1786140558]
+position = Vector2(60, 440)
+
+[node name="Player" parent="." unique_id=1470238421 instance=ExtResource("1_player")]
+position = Vector2(60, 440)
+
+[node name="HealthBar" parent="." unique_id=1460472459 instance=ExtResource("2_hpbar")]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1527233709]
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=218156657]
+color = Color(0.32, 0.55, 0.24, 1)
+polygon = PackedVector2Array(0, 480, 200, 480, 350, 440, 500, 420, 650, 440, 800, 480, 950, 500, 1100, 480, 1250, 440, 1400, 460, 1450, 480, 1800, 480, 1800, 650, 0, 650)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground" unique_id=18797579]
+polygon = PackedVector2Array(0, 480, 200, 480, 350, 440, 500, 420, 650, 440, 800, 480, 950, 500, 1100, 480, 1250, 440, 1400, 460, 1450, 480, 1800, 480, 1800, 650, 0, 650)
+
+[node name="Tree1" type="Node2D" parent="." unique_id=25797968]
+position = Vector2(150, 480)
+
+[node name="Trunk" type="Polygon2D" parent="Tree1" unique_id=945448770]
+color = Color(0.35, 0.24, 0.15, 1)
+polygon = PackedVector2Array(-4, 0, 4, 0, 4, -28, -4, -28)
+
+[node name="Canopy" type="Polygon2D" parent="Tree1" unique_id=244277859]
+color = Color(0.18, 0.42, 0.22, 1)
+polygon = PackedVector2Array(-22, -28, 22, -28, 0, -66)
+
+[node name="Tree2" type="Node2D" parent="." unique_id=926185262]
+position = Vector2(500, 420)
+
+[node name="Trunk" type="Polygon2D" parent="Tree2" unique_id=276995206]
+color = Color(0.35, 0.24, 0.15, 1)
+polygon = PackedVector2Array(-5, 0, 5, 0, 5, -34, -5, -34)
+
+[node name="Canopy" type="Polygon2D" parent="Tree2" unique_id=1244874528]
+color = Color(0.2, 0.46, 0.24, 1)
+polygon = PackedVector2Array(-28, -34, 28, -34, 0, -80)
+
+[node name="Tree3" type="Node2D" parent="." unique_id=1484464050]
+position = Vector2(950, 500)
+
+[node name="Trunk" type="Polygon2D" parent="Tree3" unique_id=71735870]
+color = Color(0.35, 0.24, 0.15, 1)
+polygon = PackedVector2Array(-5, 0, 5, 0, 5, -32, -5, -32)
+
+[node name="Canopy" type="Polygon2D" parent="Tree3" unique_id=1394352512]
+color = Color(0.18, 0.42, 0.22, 1)
+polygon = PackedVector2Array(-26, -32, 26, -32, 0, -76)
+
+[node name="Tree4" type="Node2D" parent="." unique_id=1981615945]
+position = Vector2(1600, 480)
+
+[node name="Trunk" type="Polygon2D" parent="Tree4" unique_id=435636351]
+color = Color(0.35, 0.24, 0.15, 1)
+polygon = PackedVector2Array(-4, 0, 4, 0, 4, -26, -4, -26)
+
+[node name="Canopy" type="Polygon2D" parent="Tree4" unique_id=1766765502]
+color = Color(0.2, 0.46, 0.24, 1)
+polygon = PackedVector2Array(-20, -26, 20, -26, 0, -60)
+
+[node name="Enemy1" parent="." unique_id=1746495955 instance=ExtResource("3_enemy")]
+position = Vector2(650, 400)
+
+[node name="Enemy2" parent="." unique_id=1779067325 instance=ExtResource("3_enemy")]
+position = Vector2(1250, 400)
+
+[node name="LeftTower" type="StaticBody2D" parent="." unique_id=620757771]
+position = Vector2(1590, 380)
+
+[node name="ColorRect" type="ColorRect" parent="LeftTower" unique_id=2063172860]
+offset_left = -30.0
+offset_top = -100.0
+offset_right = 30.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.42, 0.4, 0.38, 1)
+
+[node name="Roof" type="Polygon2D" parent="LeftTower" unique_id=1393778364]
+color = Color(0.35, 0.22, 0.2, 1)
+polygon = PackedVector2Array(-36, -100, 36, -100, 0, -134)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTower" unique_id=1458197102]
+shape = SubResource("RectangleShape2D_tower")
+disabled = true
+
+[node name="RightTower" type="StaticBody2D" parent="." unique_id=178922178]
+position = Vector2(1750, 380)
+
+[node name="ColorRect" type="ColorRect" parent="RightTower" unique_id=1443898322]
+offset_left = -30.0
+offset_top = -100.0
+offset_right = 30.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.42, 0.4, 0.38, 1)
+
+[node name="Roof" type="Polygon2D" parent="RightTower" unique_id=1584499208]
+color = Color(0.35, 0.22, 0.2, 1)
+polygon = PackedVector2Array(-36, -100, 36, -100, 0, -134)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightTower" unique_id=1901483582]
+shape = SubResource("RectangleShape2D_tower")
+disabled = true
+
+[node name="Lintel" type="Polygon2D" parent="." unique_id=2131741291]
+position = Vector2(1670, 300)
+color = Color(0.38, 0.36, 0.34, 1)
+polygon = PackedVector2Array(-55, -20, 55, -20, 55, 10, -55, 10)
+
+[node name="GateDoor" type="ColorRect" parent="." unique_id=1361919686]
+offset_left = -45.0
+offset_top = -50.0
+offset_right = 45.0
+offset_bottom = 50.0
+mouse_filter = 2
+color = Color(0.12, 0.1, 0.08, 1)
+
+[node name="CastleGate" type="Area2D" parent="." unique_id=1956617282]
+position = Vector2(1670, 430)
+script = ExtResource("4_portal")
+target_stage = "res://scenes/Stage2.tscn"
+spawn_position = Vector2(60, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleGate" unique_id=626910657]
+shape = SubResource("RectangleShape2D_gate")

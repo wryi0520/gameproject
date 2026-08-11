@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://delotoc4ivgfk"]
+
+[ext_resource type="Script" uid="uid://biamoyhrn312s" path="res://scripts/title_screen.gd" id="1_ascc0"]
+
+[sub_resource type="Gradient" id="Gradient_lq0lj"]
+colors = PackedColorArray(0.42, 0.66, 0.87, 1, 0.86, 0.92, 0.97, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2sdm5"]
+gradient = SubResource("Gradient_lq0lj")
+width = 4
+height = 540
+fill_to = Vector2(0, 1)
+
+[node name="Title" type="Control" unique_id=762443645]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+script = ExtResource("1_ascc0")
+
+[node name="Sky" type="TextureRect" parent="." unique_id=782230667]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("GradientTexture2D_2sdm5")
+
+[node name="MountainsFar" type="Polygon2D" parent="." unique_id=1216626393]
+color = Color(0.78, 0.66, 0.52, 1)
+polygon = PackedVector2Array(0, 420, 100, 340, 220, 400, 340, 300, 460, 380, 580, 320, 700, 390, 820, 330, 960, 410, 960, 540, 0, 540)
+
+[node name="MountainsNear" type="Polygon2D" parent="." unique_id=1155194790]
+color = Color(0.55, 0.41, 0.29, 1)
+polygon = PackedVector2Array(0, 480, 140, 400, 260, 460, 400, 380, 540, 450, 680, 390, 820, 460, 960, 400, 960, 540, 0, 540)
+
+[node name="Clouds" type="Node2D" parent="." unique_id=2077702910]
+
+[node name="Snow" type="CPUParticles2D" parent="." unique_id=354303135]
+
+[node name="ShadowLabel" type="Label" parent="." unique_id=2105561042]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 58.0
+offset_right = 963.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(0.12, 0.16, 0.28, 0.6)
+theme_override_font_sizes/font_size = 64
+text = "FROSTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1884584993]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 960.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "FROSTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="." unique_id=1730709785]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 230.0
+offset_right = 580.0
+offset_bottom = 450.0
+theme_override_constants/separation = 12
+
+[node name="StartButton" type="Button" parent="MenuContainer" unique_id=1587183941]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 22
+text = "게임 시작"
+flat = true
+
+[node name="SettingsButton" type="Button" parent="MenuContainer" unique_id=293119226]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 22
+text = "설정"
+flat = true
+
+[node name="ExtraButton" type="Button" parent="MenuContainer" unique_id=1562890232]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 22
+text = "기타"
+flat = true
+
+[node name="QuitButton" type="Button" parent="MenuContainer" unique_id=1502931425]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 22
+text = "종료"
+flat = true
+
+[node name="SettingsPanel" type="Control" parent="." unique_id=116097628]
+anchors_preset = 0
+offset_left = 1310.0
+offset_top = 230.0
+offset_right = 1570.0
+offset_bottom = 490.0
+
+[node name="PanelTitle" type="Label" parent="SettingsPanel" unique_id=86562916]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "설정"
+horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="SettingsPanel" unique_id=2073429309]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 240.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0.9, 0.92, 0.97, 1)
+theme_override_font_sizes/font_size = 16
+text = "음량"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel" unique_id=2125836]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 86.0
+offset_right = 240.0
+offset_bottom = 106.0
+value = 80.0
+
+[node name="BrightnessLabel" type="Label" parent="SettingsPanel" unique_id=2097786624]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 126.0
+offset_right = 240.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.9, 0.92, 0.97, 1)
+theme_override_font_sizes/font_size = 16
+text = "밝기"
+
+[node name="BrightnessSlider" type="HSlider" parent="SettingsPanel" unique_id=786834836]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 152.0
+offset_right = 240.0
+offset_bottom = 172.0
+value = 100.0
+
+[node name="CloseButton" type="Button" parent="SettingsPanel" unique_id=1489934962]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 0
+offset_left = 30.0
+offset_top = 200.0
+offset_right = 30.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = "뒤로"
+flat = true
